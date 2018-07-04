@@ -1,0 +1,49 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+.header{
+  padding: 10px;
+  background-color: #C2EDE2;
+  text-align: center;
+}
+.logo-img{
+  float: left;
+  margin-left: 150px;
+  height: 60px;
+  width: 60px;
+}
+.logo{
+  max-width: 250px;
+  width: 50px;
+  margin-bottom: 15px;
+}
+.blog{
+  text-align: center;
+  display:inline-block;
+  height: 150px;
+  width: 100px;
+  margin: 0 50px;
+}
+.section{
+  padding: 10px;
+  text-align: center;
+}
+.paragraph{
+  padding: 10px;
+  text-align: center;
+  background-color:#CFE9DE;
+}
+.footer{
+  padding: 1px;
+  text-align: center;
+  background-color:#7ED7B3;
+}
+.text-center{
+  padding: 10px;
+  text-align: center;
+}
+.headtext {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
