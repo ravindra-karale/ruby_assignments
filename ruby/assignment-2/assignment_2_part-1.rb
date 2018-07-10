@@ -45,10 +45,10 @@ puts "\n9. combine hash_1 & hash_2:"
 print hash_1.merge(hash_2)
 
 puts "\n10. replace values of hash_1 with elements from array_1: "
-# dup_hash = hash_1.dup
-# new_hash = hash_1.zip(array_1)
-# new_hash.map { |e| dup_hash[e[0]]=e[1] }
-# puts dup_hash
+dup_hash = hash_1.dup
+new_hash = hash_1.zip(array_1)
+new_hash.map { |e| dup_hash[e[0][0]]=e[1] }
+puts dup_hash
 
 puts "11. Make sum of integer values of hash_2: "
 s = 0
