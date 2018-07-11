@@ -1,14 +1,12 @@
 class FileHandler
-  def initialize(sr_no="",product_name="",product_price="",product_stock="",company_name="")
-    @product_name = product_name
-    @product_price = product_price
-    @product_stock = product_stock
-    @company_name = company_name
-    @id = sr_no
+  def initialize(product_details = {},user_details = {})
+    @product_details = product_details
+    @user_details = user_details
+    puts @product_details
   end
 
   def getdata
-    file = open('inventory.txt', 'r')
+    file = File.open('inventory.txt', 'r')
     file.read
   end
 
@@ -22,11 +20,27 @@ class FileHandler
     end
   end
 
-  def setdata
-    open('inventory.txt', 'a+') { |f|
-      f.puts @id.to_s + "," + @product_name + "," + @product_price+ "," +@product_stock+ "," +@company_name+"\n"
-      f.close
-    }
 
+  def getdata_by_id_name(id,name)
+    file = File.open('inventory.txt', 'r')
+    File.readlines(file).each do | line |
+      product_id = line.to_s.split(",")[0]
+      product_name = line.to_s.split(",")[1]
+      if product_name == name and product_id == id
+          return line
+      end
+    end
+  end
+
+  def setdata
+    f = File.open('inventory.txt', 'a+')
+    f.puts (@product_details["sr_no"] + "," + @product_details["product_name"] + "," + @product_details["product_price"] + "," + @product_details["product_stock"] + "," + @product_details["company_name"])
+    f.close
+  end
+
+  def order_set_data
+    f = File.open('orders.txt', 'a')
+    f.puts (@product_details["sr_no"] + "," + @product_details["product_name"] + "," + @user_details["user_name"] + "," + @user_details["card_number"] + "," + @user_details["cvv"])
+    f.close
   end
 end
