@@ -14,8 +14,9 @@ class CostCalculator
 
   def calculations
     total = 0
+    total_save = 0
     line_hash = FileStorage.new(STORAGE_FILE).read_line
-    price_total_arr = []
+    price_total_arr = {}
     @purchased_items.each do | name , quntity |
       line_arr = line_hash.fetch(name)
       actual_price = line_arr[0].to_f
@@ -28,10 +29,16 @@ class CostCalculator
       else
         total += (quntity * actual_price)
       end
-      price_total_arr.push(total)
+      total_save += ((actual_price * quntity) - total)
+      price_total_arr[name] = total
       total = 0
     end
-    puts price_total_arr
-    puts total
+    puts "-----------------------------------\nItem     Quantity      Price\n-----------------------------------"
+    @purchased_items.each do | name, quntity |
+      puts "#{name}        #{quntity}        #{price_total_arr[name]}"
+    end
+    sum = price_total_arr.values.reduce:+
+    puts "\nTotal price: $#{(sum * 100).round / 100.0}"
+    puts "Total saved: $#{(total_save * 100).round / 100.0} today"
   end
 end

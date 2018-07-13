@@ -19,8 +19,4 @@ class Item
   def read_items
     FileStorage.new(STORAGE).read_line
   end
-
 end
-
-obj = Item.new({"name"=>"apple","price"=>0.89,"sale"=>0 ,"discount_price"=> 0})
-obj.read_items
